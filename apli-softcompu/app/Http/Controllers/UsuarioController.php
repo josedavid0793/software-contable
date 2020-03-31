@@ -4,13 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use App\Usuario;
 
 
-class Usuario extends Controller
+class UsuarioController extends Controller
 {
     public function login(Request $request){
       
@@ -24,7 +23,7 @@ class Usuario extends Controller
       //Validar datos
       $validate = Validator::make($request = $params_array, [
              'usuario'        =>'required',
-             'contraseña'     => 'required',
+             'password'     => 'required',
 
          ]);
       if($validate->fails()){
@@ -39,14 +38,15 @@ class Usuario extends Controller
       }else{
 
         //Cifrar la password
-        $pwd = hash('sha256',$params->password);
+      // $pwd = hash('sha256',$params->contraseña);
+       $pwd = $params->password;
 
         //Devolver token o datos
 
-        $signup = $jwtAuth->signup($params->email,$pwd);
+        $signup = $jwtAuth->signup($params->usuario,$pwd);
         if(!empty($params->getToken)){
 
-          $signup = $jwtAuth->signup($params->email,$pwd,true);
+          $signup = $jwtAuth->signup($params->usuario,$pwd,true);
         }
       }
 
@@ -57,5 +57,5 @@ class Usuario extends Controller
 
     //Metodo para actualizar datos del usuario por medio del metodo checkToken de JwtAuth.php
 
-    }
+    //}
 }

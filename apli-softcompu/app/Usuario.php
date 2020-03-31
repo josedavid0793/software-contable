@@ -6,7 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class Usuario extends Authenticatable
 {
     use Notifiable;
 
@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'id_usuario', 'usuario','nombres','apellidos','documento','tipo_documento','correo','contraseña','rol',
+        'id_usuario', 'usuario','nombres','apellidos','documento','tipo_documento','correo','password','rol',
     ];
 
     /**
@@ -25,8 +25,17 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'contraseña', 'remember_token',
+        'password', 'remember_token',
     ];
+
+
+     //Relacionamos en este caso de uno a muchos
+    public function TipoDocumentos(){
+        return $this->hasMany('App\TipoDocumento');
+    }
+    public function Roles(){
+        return $this->hasMany('App\RolUsuario');
+    }
 
     /**
      * The attributes that should be cast to native types.

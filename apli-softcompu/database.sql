@@ -1,5 +1,5 @@
 CREATE DATABASE IF NOT EXISTS conta_software;
-USE conta_software;
+USE minerva;
 
 /*CREATE TABLE sueldos (
 id_sueldo   int auto_increment not null,
@@ -112,3 +112,23 @@ sueldo                int (200)not null,
 CONSTRAINT fk_identificacion_empleado FOREIGN KEY (identificacion) REFERENCES empleados (identificacion)
 )ENGINE=InnoDB;
 
+
+
+/*QUERYS  UTILIZADOS PARA REFORMAR LA BASE DE DATOS*/
+
+TABLA EMPLEADOS
+ALTER TABLE empleados ADD CONSTRAINT tp_fk_documento FOREIGN KEY (Tipo_documento) REFERENCES tipo_documentos (codigo_tp);
+ALTER TABLE empleados ADD CONSTRAINT nombre_fk_cargo FOREIGN KEY (cargo_empleado) REFERENCES cargos (nombre_cargo);
+ALTER TABLE empleados ADD UNIQUE correo_empleado_unique (correo);
+ALTER TABLE empleados ADD UNIQUE indice_nombre_empleado (nombres);
+ALTER TABLE empleados ADD UNIQUE apellidos_indice_empleado (apellidos);
+ALTER TABLE empleados ADD UNIQUE salario_indice_empleado (salario_empleado);
+
+
+
+TABLA datos_nomina_empleado
+
+ALTER TABLE datos_nomina_empleado ADD CONSTRAINT identificacion_fk_ FOREIGN KEY (identificacion) REFERENCES empleados (identificacion);
+ALTER TABLE datos_nomina_empleado ADD CONSTRAINT nombres_fk_empleado FOREIGN KEY (nombres_empleado) REFERENCES empleados (nombres);
+ALTER TABLE datos_nomina_empleado ADD CONSTRAINT apellidos_fk_empleado FOREIGN KEY (apellidos_empleado) REFERENCES empleados (apellidos);
+ALTER TABLE datos_nomina_empleado ADD CONSTRAINT salario_fk_empleado FOREIGN KEY (salario_base) REFERENCES empleados (salario_empleado);

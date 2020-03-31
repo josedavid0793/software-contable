@@ -39,6 +39,35 @@ height: 693px !important;
 width:101% !important;
 }
 
+.boton-su:hover{
+color: #fff;
+background-color: #28a745;
+border-color: #28a745;
+}
+.boton-su {
+    color: #28a745;
+    border-color: #28a745;
+}
+.boton {
+    display: inline-block;
+    font-weight: 400;
+    color: #212529;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
 h1{
 font-size: 45px;
 text-transform: uppercase;
@@ -49,6 +78,7 @@ margin-top: 20px;
 }
 
 </style>
+<meta charset="utf-8">
 
 <div class="body container-fuid">
 
@@ -59,15 +89,18 @@ margin-top: 20px;
         <div class="input-group mb-3 div-boton">
            <img src="/assets/imagenes/minerva-logo.png" class="minerva-logo">
         </div>
-        <form>
+        <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" novalidate>
            <div class="input-group mb-3 div-minerva">
-               <input type="text" class="form-control" placeholder="Usuario" aria-label="Username" aria-describedby="basic-addon1">
+               <input type="text" name="usuario" ngModel class="form-control" placeholder="Usuario" #usuario="ngModel" required>
            </div>
            <div class="input-group mb-3 div-minerva">
-               <input type="text" class="form-control form-minerva" placeholder="Contraseña" aria-label="Username" aria-describedby="basic-addon1">
+               <input type="password" name="password" ngModel class="form-control form-minerva" placeholder="Contraseña"  #password="ngModel" required>
+               <small *ngIf="!password.valid && password.touched" class="invalid-feedback d-block">
+               La contraseña no es válida
+               </small>
            </div>
            <div class="input-group mb-3 div-boton">
-              <button type="button" class="btn btn-outline-success">Ingresar</button> 
+              <input  type="submit" class="boton boton-su" value="Ingresar" [disabled] ="loginForm.invalid"> 
           </div>
       </form>
      </div>

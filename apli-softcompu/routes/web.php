@@ -13,8 +13,8 @@
 
 Route::get('/', function () {
     return view('welcome');
+});
 
 
 
 Route::Post('/login','UsuarioController@login');
-});
