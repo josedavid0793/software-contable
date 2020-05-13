@@ -1,0 +1,131 @@
+<style type="text/css">
+	h2{
+	text-align: center;
+	font-family: 'Bitter', serif;
+	}
+	p{
+	text-align: center;	
+	}
+
+.div-minerva{
+width: 50% !important;
+justify-content:center !important;
+left: 28% !important;
+border:1px solid #566573;
+}
+.div-boton{
+width: 36% !important;
+justify-content:center !important;
+left: 35% !important;
+}
+.login-minerva{
+  width: 40%;
+  border: 1px solid #99A3A4;
+  border-radius: 4px;
+  padding: 14px;
+  height: 57%;
+  position: absolute;
+  top: 50%;
+  left: 78%;
+  transform: translate(-50%, -50%);
+}
+.minerva-logo{
+width: 68px;
+margin-top: -10px;
+}
+
+.imagen{
+height: 693px !important;
+width:101% !important;
+}
+
+.boton-su:hover{
+color: #fff;
+background-color: #28a745;
+border-color: #28a745;
+}
+.boton-su {
+    color: #28a745;
+    border-color: #28a745;
+}
+.boton {
+    display: inline-block;
+    font-weight: 400;
+    color: #212529;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+h1{
+font-size: 45px;
+text-transform: uppercase;
+text-align: center;
+letter-spacing: 40px;
+font-family: 'Bitter', serif;
+margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+  .login-minerva{
+  width: 82%;
+  border: 1px solid #99A3A4;
+  border-radius: 4px;
+  padding: 14px;
+  height: 57%;
+  position: absolute;
+  top: 131%;
+  left: 49%;
+  transform: translate(-50%, -50%);
+}
+}
+</style>
+<meta charset="utf-8">
+
+<div class="body container-fuid">
+
+  <div class="col-md-12 mt-4">
+     <div class="col-xs-12 col-sm-12 col-md-6 login-minerva">
+  		<h2>{{titulo}}</h2>
+        <p>Ingresa</p>
+        <div class="input-group mb-3 div-boton">
+           <img src="/assets/imagenes/minerva-logo.png" class="minerva-logo">
+        </div>
+        <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+           <div class="form-group ">
+            <label for="usuario">Usuario</label>
+               <input type="text" class="form-control" required ngModel name="usuario" #usuario="ngModel"   pattern="[a-zA-Z]+">
+           </div>
+
+           <div class="form-group">
+               <label for="password">Contraseña</label>
+               <input type="password" name="password" class="form-control" #password="ngModel" ngModel required>
+               <small *ngIf="!password.valid && password.touched" class="invalid-feedback d-block">
+               La contraseña no es válida
+               </small>
+           </div>
+           <div class="input-group mb-3 div-boton">
+              <input  type="submit" class="btn btn-success" value="Ingresar" [disabled] ="loginForm.invalid"> 
+          </div>
+      </form>
+     </div>
+ 
+
+
+         <div class="col-xs-12 col-sm-12 col-md-6">
+           <img src="/assets/imagenes/minerva-contable.jpg" class="imagen">
+         </div>
+  </div>
+
+</div>

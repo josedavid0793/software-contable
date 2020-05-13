@@ -1,0 +1,48 @@
+usuarios (
+id_usuario        va ser la PK
+usuario           va ser unique   
+Nombres
+Apellidos
+correo
+contraseña
+rol               va ser una FK de la tabla roles
+created_at
+update_at
+remember_token
+
+
+);
+
+
+roles (
+id_rol          va ser la PK de esta tabla y una FK de la tabla usuarios
+nombre_rol
+descripcion
+created_at
+update_at
+)
+
+empleados(
+id_empleado       va ser la PK
+nombres
+apellidos 
+cedula           va ser unique 
+cargo           va ser FK en la tabla empleados de la tabla cargos
+sueldo           va ser FK en la tabla empleados    de la tabla cargos       
+correo
+fecha_ingreso
+fecha_retiro
+created_at
+update_at
+)
+
+cargos (
+id_cargo      va ser la PK
+nombre_cargo   va ser la FK en la tabla empleados
+sueldo_cargo  
+perfil
+funciones
+created_at
+update_at  
+
+)

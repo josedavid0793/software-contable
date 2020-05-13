@@ -1,0 +1,47 @@
+<div class="col-md-12 mt-3">
+	<h1>{{titulo}}</h1>
+    <p>Registrate en nuestra plataforma Gratuita</p>
+
+
+    <form (ngSubmit)="onSubmit(registerForm)" #registerForm="ngForm" class="col-xs-12 col-sm-6 col-md-5 ml-0 pl-0" novalidate="">
+    	<div class="form-group">
+    		<label for="usuario">Usuario</label>
+    		<input type="text" class="form-control" required ngModel name="usuario" #usuario="ngModel"   pattern="[a-zA-Z]+">
+    		<small *ngIf="!nombres.valid && nombres.touched" class="invalid-feedback d-block">
+		    El usuario no es valido.
+		    </small>
+    	</div>
+    	<div class="form-group">
+    		<label for="nombres">Nombres</label>
+    		<input type="text" name="nombres" class="form-control" #nombres="ngModel" ngModel required>
+    		<small *ngIf="!nombres.valid && nombres.touched" class="invalid-feedback d-block">
+		    Los nombres no son validos.
+		    </small>
+    	</div>
+    	<div class="form-group">
+    		<label for="apellidos">Apellidos</label>
+    		<input type="text" name="apellidos" class="form-control" #apellidos="ngModel" ngModel required>
+    		<small *ngIf="!apellidos.valid && apellidos.touched" class="invalid-feedback d-block">
+		    Los Apellidos no son validos.
+		    </small>
+    	</div>
+    	<div class="form-group">
+    		<label for="correo">Correo</label>
+    		<input type="email" name="correo" class="form-control" #correo="ngModel"ngModel required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+    		<small *ngIf="!correo.valid && correo.touched" class="invalid-feedback d-block">
+		    El correo no es valido.
+		    </small>
+    	</div>
+
+    	<div class="form-group">
+    		<label for="password">Contraseña</label>
+    		<input type="password" name="password" class="form-control" #password="ngModel" ngModel required>
+    		<small *ngIf="!password.valid && password.touched" class="invalid-feedback d-block">
+		    La contraseña no es válida.
+		    </small>
+    	</div>
+    	<input type="submit" value="Registrar" class="btn btn-success">
+    </form>
+</div>
+
+

@@ -1,0 +1,8 @@
+{
+	"/minerva/*":{
+		"target":"http://localhost",
+		"secure": false,
+		"changeOrigin": true
+
+	}
+}
